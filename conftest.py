@@ -9,6 +9,7 @@ def no_db_factories():
 
     from tests.salary.factories import (  # NOQA
         EmailAddressFactory,
+        TokenFactory,
     )
 
     def is_factory(obj):

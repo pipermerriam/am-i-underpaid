@@ -9,8 +9,6 @@ from disparity.apps.salary.utils import (
 def test_token_round_trip():
     data_in = {
         'seed': 12345,
-        'email': 'test@example.com',
-        'all_emails': ['test@example.com', 'test-1@example.com', 'test-2@example.com'],
         'is_admin': True,
         'prime_identifier': 5,
         'survey_id': 'some-id',

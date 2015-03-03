@@ -17,25 +17,19 @@
                 <p class="lead">
                     Feel free to <a href="{% url 'survey-create' %}">go create a salary survey</a>
                 </p>
+                <h2>How it works</h1>
                 <p class="lead">
-                    When you create a survey, two important things happen.
-                </p>
-                <p class="lead">
-                    1. Your salary is added to a large random number and stored
-                    in the database.
+                    <span class="badge">1.</span> When you create a survey, it is
+                    seeded with a large random number.  Your salary is then added
+                    to that number as the running total.
                 </p>
                 <p class="lead">
                     2. Special links are sent out to all of the email addresses
                     you specified.  These links will allow each person to input
-                    their salary.  None of the email addresses are stored
-                    anywhere on the server.
+                    their salary, which is then added to the running total.
                 </p>
                 <p class="lead">
-                    3. As each person follows the link and inputs their salary,
-                    it is added to the large number in the database.
-                </p>
-                <p class="lead">
-                    4. When everyone has responded, or the survey owner
+                    3. When everyone has responded, or the survey owner
                     finalizes the survey, the large number is subtracted away,
                     and an average is taken, which gives the average salary of
                     all participants.

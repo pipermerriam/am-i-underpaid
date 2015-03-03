@@ -20,10 +20,8 @@ def get_survey_unique_primes(*emails):
     )
 
 
-def generate_survey_token(seed, email, all_emails, prime_identifier, is_admin, survey_id):
+def generate_survey_token(seed, prime_identifier, is_admin, survey_id):
     return signing.dumps({
-        'email': email,
-        'all_emails': all_emails,
         'seed': seed,
         'prime_identifier': prime_identifier,
         'is_admin': is_admin,

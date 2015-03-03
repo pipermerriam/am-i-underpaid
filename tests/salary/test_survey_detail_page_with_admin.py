@@ -1,16 +1,10 @@
 from django.core.urlresolvers import reverse
-from disparity.apps.salary.utils import (
-    generate_survey_token,
-)
 
 
 def test_survey_detail_page_without(webtest_client, factories):
     survey = factories.SurveyFactory(num_collected=3, _tracker=str(5 * 7 * 13))
 
-    token = generate_survey_token(
-        seed=12345,
-        email='test@example.com',
-        all_emails=factories.EmailAddressFactory.create_batch(5),
+    token = factories.TokenFactory(
         is_admin=True,
         prime_identifier=17,
         survey_id=survey.uuid,
@@ -25,10 +19,7 @@ def test_survey_detail_page_without(webtest_client, factories):
 def test_survey_detail_page_with_finalize_form(webtest_client, factories):
     survey = factories.SurveyFactory(num_collected=4, _tracker=str(5 * 7 * 13 * 17))
 
-    token = generate_survey_token(
-        seed=12345,
-        email='test@example.com',
-        all_emails=factories.EmailAddressFactory.create_batch(5),
+    token = factories.TokenFactory(
         is_admin=True,
         prime_identifier=17,
         survey_id=survey.uuid,
@@ -45,10 +36,7 @@ def test_finalizing_a_survey_manually(webtest_client, factories, models):
         num_collected=4, num_expected=10, _tracker=str(5 * 7 * 13 * 17),
     )
 
-    token = generate_survey_token(
-        seed=12345,
-        email='test@example.com',
-        all_emails=factories.EmailAddressFactory.create_batch(5),
+    token = factories.TokenFactory(
         is_admin=True,
         prime_identifier=17,
         survey_id=survey.uuid,
@@ -70,10 +58,7 @@ def test_finalizing_as_non_admin(client, factories, models):
         num_collected=4, num_expected=10, _tracker=str(5 * 7 * 13 * 17),
     )
 
-    token = generate_survey_token(
-        seed=12345,
-        email='test@example.com',
-        all_emails=factories.EmailAddressFactory.create_batch(5),
+    token = factories.TokenFactory(
         is_admin=False,
         prime_identifier=17,
         survey_id=survey.uuid,
@@ -89,10 +74,7 @@ def test_finalizing_to_early(client, factories, models):
         num_collected=3, num_expected=10, _tracker=str(5 * 7 * 13),
     )
 
-    token = generate_survey_token(
-        seed=12345,
-        email='test@example.com',
-        all_emails=factories.EmailAddressFactory.create_batch(5),
+    token = factories.TokenFactory(
         is_admin=True,
         prime_identifier=17,
         survey_id=survey.uuid,

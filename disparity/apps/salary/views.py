@@ -44,24 +44,22 @@ class SurveyCreateView(FormView):
         )
         owner_token = generate_survey_token(
             seed=seed,
-            email=owner_email,
-            all_emails=all_emails,
             survey_id=survey.uuid,
             prime_identifier=prime_lookups[owner_email],
             is_admin=True,
         )
         # Send the owner their email/token
-        send_survey_creation_email(email=owner_email, token=owner_token)
+        send_survey_creation_email(email=owner_email, all_emails=all_emails, token=owner_token)
         for email in participant_emails:
             participant_token = generate_survey_token(
                 seed=seed,
-                email=email,
-                all_emails=all_emails,
                 survey_id=survey.uuid,
                 prime_identifier=prime_lookups[email],
                 is_admin=False,
             )
-            send_survey_creation_email(email=email, token=participant_token)
+            send_survey_creation_email(
+                email=email, all_emails=all_emails, token=participant_token,
+            )
         return redirect(reverse('survey-detail', kwargs={'token': owner_token}))
 
 

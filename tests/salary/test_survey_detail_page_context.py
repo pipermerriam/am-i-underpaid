@@ -1,19 +1,13 @@
 from django.core.urlresolvers import reverse
-from disparity.apps.salary.utils import (
-    generate_survey_token,
-)
 
 
 def test_survey_detail_page_with_admin_token(client, factories):
     survey = factories.SurveyFactory(num_collected=3, _tracker=str(5 * 7 * 13))
 
-    token = generate_survey_token(
-        seed=12345,
-        email='test@example.com',
-        all_emails=factories.EmailAddressFactory.create_batch(5),
+    token = factories.TokenFactory(
         is_admin=True,
-        prime_identifier=17,
         survey_id=survey.uuid,
+        prime_identifier=17,
     )
     url = reverse('survey-detail', kwargs={'token': token})
 
@@ -27,11 +21,7 @@ def test_survey_detail_page_with_admin_token(client, factories):
 def test_survey_detail_page_with_regular(client, factories):
     survey = factories.SurveyFactory(num_collected=3, _tracker=str(5 * 7 * 13))
 
-    token = generate_survey_token(
-        seed=12345,
-        email='test@example.com',
-        all_emails=factories.EmailAddressFactory.create_batch(5),
-        is_admin=False,
+    token = factories.TokenFactory(
         prime_identifier=17,
         survey_id=survey.uuid,
     )
@@ -47,11 +37,7 @@ def test_survey_detail_page_with_regular(client, factories):
 def test_survey_detail_page_with_unsubmitted_key(client, factories):
     survey = factories.SurveyFactory(num_collected=3, _tracker=str(5 * 7 * 13))
 
-    token = generate_survey_token(
-        seed=12345,
-        email='test@example.com',
-        all_emails=factories.EmailAddressFactory.create_batch(5),
-        is_admin=False,
+    token = factories.TokenFactory(
         prime_identifier=17,
         survey_id=survey.uuid,
     )
@@ -67,11 +53,7 @@ def test_survey_detail_page_with_unsubmitted_key(client, factories):
 def test_survey_detail_page_with_already_submitted_key(client, factories):
     survey = factories.SurveyFactory(num_collected=3, _tracker=str(5 * 7 * 13 * 17))
 
-    token = generate_survey_token(
-        seed=12345,
-        email='test@example.com',
-        all_emails=factories.EmailAddressFactory.create_batch(5),
-        is_admin=False,
+    token = factories.TokenFactory(
         prime_identifier=17,
         survey_id=survey.uuid,
     )
@@ -88,10 +70,7 @@ def test_survey_detail_page_finalized_survey(client, factories):
     survey = factories.SurveyFactory(num_collected=4, _tracker=str(5 * 7 * 13 * 17))
     survey.finalize(12345)
 
-    token = generate_survey_token(
-        seed=12345,
-        email='test@example.com',
-        all_emails=factories.EmailAddressFactory.create_batch(5),
+    token = factories.TokenFactory(
         is_admin=False,
         prime_identifier=17,
         survey_id=survey.uuid,
