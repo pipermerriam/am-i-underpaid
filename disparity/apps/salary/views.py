@@ -32,6 +32,7 @@ class SurveyCreateView(FormView):
     def form_valid(self, form):
         owner_email = form.cleaned_data['owner_email']
         participant_emails = form.cleaned_data['participant_emails']
+        all_emails = [owner_email] + participant_emails
         survey = Survey.objects.create(
             num_expected=len(participant_emails) + 1,
         )
@@ -44,6 +45,7 @@ class SurveyCreateView(FormView):
         owner_token = generate_survey_token(
             seed=seed,
             email=owner_email,
+            all_emails=all_emails,
             survey_id=survey.uuid,
             prime_identifier=prime_lookups[owner_email],
             is_admin=True,
@@ -54,6 +56,7 @@ class SurveyCreateView(FormView):
             participant_token = generate_survey_token(
                 seed=seed,
                 email=email,
+                all_emails=all_emails,
                 survey_id=survey.uuid,
                 prime_identifier=prime_lookups[email],
                 is_admin=False,

@@ -10,6 +10,7 @@ def test_survey_detail_page_with_admin_token(client, factories):
     token = generate_survey_token(
         seed=12345,
         email='test@example.com',
+        all_emails=factories.EmailAddressFactory.create_batch(5),
         is_admin=True,
         prime_identifier=17,
         survey_id=survey.uuid,
@@ -29,6 +30,7 @@ def test_survey_detail_page_with_regular(client, factories):
     token = generate_survey_token(
         seed=12345,
         email='test@example.com',
+        all_emails=factories.EmailAddressFactory.create_batch(5),
         is_admin=False,
         prime_identifier=17,
         survey_id=survey.uuid,
@@ -48,6 +50,7 @@ def test_survey_detail_page_with_unsubmitted_key(client, factories):
     token = generate_survey_token(
         seed=12345,
         email='test@example.com',
+        all_emails=factories.EmailAddressFactory.create_batch(5),
         is_admin=False,
         prime_identifier=17,
         survey_id=survey.uuid,
@@ -67,6 +70,7 @@ def test_survey_detail_page_with_already_submitted_key(client, factories):
     token = generate_survey_token(
         seed=12345,
         email='test@example.com',
+        all_emails=factories.EmailAddressFactory.create_batch(5),
         is_admin=False,
         prime_identifier=17,
         survey_id=survey.uuid,
@@ -87,6 +91,7 @@ def test_survey_detail_page_finalized_survey(client, factories):
     token = generate_survey_token(
         seed=12345,
         email='test@example.com',
+        all_emails=factories.EmailAddressFactory.create_batch(5),
         is_admin=False,
         prime_identifier=17,
         survey_id=survey.uuid,

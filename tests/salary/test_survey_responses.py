@@ -11,6 +11,7 @@ def test_survey_salary_recording(webtest_client, factories, models):
     token = generate_survey_token(
         seed=seed,
         email='test@example.com',
+        all_emails=factories.EmailAddressFactory.create_batch(5),
         is_admin=False,
         prime_identifier=17,
         survey_id=survey.uuid,
@@ -38,6 +39,7 @@ def test_survey_auto_finalizes_on_last_response(webtest_client, factories, model
     token = generate_survey_token(
         seed=seed,
         email='test@example.com',
+        all_emails=factories.EmailAddressFactory.create_batch(5),
         is_admin=False,
         prime_identifier=23,
         survey_id=survey.uuid,

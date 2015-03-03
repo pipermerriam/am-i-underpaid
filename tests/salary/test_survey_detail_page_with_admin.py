@@ -10,6 +10,7 @@ def test_survey_detail_page_without(webtest_client, factories):
     token = generate_survey_token(
         seed=12345,
         email='test@example.com',
+        all_emails=factories.EmailAddressFactory.create_batch(5),
         is_admin=True,
         prime_identifier=17,
         survey_id=survey.uuid,
@@ -27,6 +28,7 @@ def test_survey_detail_page_with_finalize_form(webtest_client, factories):
     token = generate_survey_token(
         seed=12345,
         email='test@example.com',
+        all_emails=factories.EmailAddressFactory.create_batch(5),
         is_admin=True,
         prime_identifier=17,
         survey_id=survey.uuid,
@@ -46,6 +48,7 @@ def test_finalizing_a_survey_manually(webtest_client, factories, models):
     token = generate_survey_token(
         seed=12345,
         email='test@example.com',
+        all_emails=factories.EmailAddressFactory.create_batch(5),
         is_admin=True,
         prime_identifier=17,
         survey_id=survey.uuid,
@@ -70,6 +73,7 @@ def test_finalizing_as_non_admin(client, factories, models):
     token = generate_survey_token(
         seed=12345,
         email='test@example.com',
+        all_emails=factories.EmailAddressFactory.create_batch(5),
         is_admin=False,
         prime_identifier=17,
         survey_id=survey.uuid,
@@ -88,6 +92,7 @@ def test_finalizing_to_early(client, factories, models):
     token = generate_survey_token(
         seed=12345,
         email='test@example.com',
+        all_emails=factories.EmailAddressFactory.create_batch(5),
         is_admin=True,
         prime_identifier=17,
         survey_id=survey.uuid,

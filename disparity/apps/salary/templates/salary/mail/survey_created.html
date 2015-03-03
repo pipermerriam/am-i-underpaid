@@ -5,6 +5,14 @@ link to view the average salary.
 
 [{{ survey_url }}]({{ survey_url }})
 
+This salary survey was sent to the following people.
+
+{% for email in all_emails %}- {{ email }}
+{% endfor %}
+
+
+# Survey Information
+
 - This system does not store any personally identifying information.  That
   includes this email address and any salary information you enter.
 - Your salary will not be stored anywhere in the database, nor is there any

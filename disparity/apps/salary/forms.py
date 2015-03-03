@@ -7,8 +7,18 @@ from django.core.validators import (
 
 
 class SurveyCreateForm(forms.Form):
-    owner_email = forms.EmailField()
-    owner_salary = forms.IntegerField()
+    owner_email = forms.EmailField(
+        label='Your Email Address', help_text=(
+            "Your email address will only be used to email you a special link "
+            "that allows you to see the survey results and administer the "
+            "survey."
+        ),
+    )
+    owner_salary = forms.IntegerField(
+        label='Your Salary', help_text=(
+            "Your salary information is not directly stored in the database."
+        ),
+    )
     participant_emails = forms.CharField(
         help_text=(
             "Comma delimited list of email addresses.  Newlines and spaces will "
