@@ -3,7 +3,41 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<h1>Am I Underpaid</h1>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="well">
+                <h1>Am I Underpaid?</h1>
 
-<p>This is the home page.</p>
+                <p class="lead">
+                    This is a simple web application for a group of employees
+                    to find out their average salary without exposing any
+                    individual salary information to anyone in the group, or
+                    storing any private information on the server.
+                </p>
+                <p class="lead">
+                    Feel free to <a href="{% url 'survey-create' %}">go create a salary survey</a>
+                </p>
+                <p class="lead">
+                    When you create a survey, two important things happen.
+                </p>
+                <p class="lead">
+                    1. Your salary is added to a large random number and stored
+                    in the database.
+                </p>
+                <p class="lead">
+                    2. Special links are sent out to all of the email addresses
+                    you specified.  These links will allow each person to input
+                    their salary.  None of the email addresses are stored
+                    anywhere on the server.
+                </p>
+                <p class="lead">
+                    3. As each person follows the link and inputs their salary,
+                    it is added to the large number in the database.
+                </p>
+                <p class="lead">
+                    4. When everyone has responded, or the survey owner
+                    finalizes the survey, the large number is subtracted away,
+                    and an average is taken, which gives the average salary of
+                    all participants.
+                </p>
 {% endblock content %}
