@@ -34,6 +34,7 @@ INSTALLED_APPS = (
     # third party
     'pipeline',
     'bootstrap3',
+    'storages',
     'raven.contrib.django.raven_compat',
 
     # core app
