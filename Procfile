@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath="$PWD/am-i-underpaid" wsgi:application
+web: newrelic-admin run-program gunicorn disparity.wsgi -c disparity/gunicorn.conf
