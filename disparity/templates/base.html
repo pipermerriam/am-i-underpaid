@@ -20,9 +20,8 @@
 
     <div class="header navbar">
       <div class="container">
-        <a class="navbar-brand" href="/">Am I Underpaid</a>
+        <a class="navbar-brand" href="{% url 'home' %}">Am I Underpaid</a>
         <ul class="nav navbar-nav">
-          <li><a href="{% url 'home' %}">Home</a></li>
           <li><a href="{% url 'survey-create' %}">Create Survey</a></li>
         </ul>
       </div>
