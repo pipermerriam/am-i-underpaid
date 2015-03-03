@@ -17,21 +17,73 @@
                 <p class="lead">
                     Feel free to <a href="{% url 'survey-create' %}">go create a salary survey</a>
                 </p>
-                <h2>How it works</h1>
+                <h2>How it works</h2>
                 <p class="lead">
                     <span class="badge">1.</span> When you create a survey, it is
                     seeded with a large random number.  Your salary is then added
                     to that number as the running total.
                 </p>
                 <p class="lead">
-                    2. Special links are sent out to all of the email addresses
-                    you specified.  These links will allow each person to input
-                    their salary, which is then added to the running total.
+                    <span class="badge">2.</span> Special links are sent out to
+                    all of the email addresses you specified.  These links will
+                    allow each person to input their salary, which is then
+                    added to the running total.
                 </p>
                 <p class="lead">
-                    3. When everyone has responded, or the survey owner
-                    finalizes the survey, the large number is subtracted away,
-                    and an average is taken, which gives the average salary of
-                    all participants.
+                    <span class="badge">3.</span> When everyone has responded,
+                    or the survey owner finalizes the survey, the large number
+                    is subtracted away, and an average is taken, which gives
+                    the average salary of all participants.
                 </p>
+                <h2>How your data is protected.</h2>
+                <p class="lead">
+                    <span class="badge">1.</span> The server does not store any
+                    email addresses.  The only time the server knows any email
+                    address is during survey creation time.  Once the links
+                    have been sent to all participants, there is no way to link
+                    a submitted salary to a specific email address.
+                </p>
+                <p class="lead">
+                    <span class="badge">2.</span> The salary information stored
+                    as a running total rather than as individual salary
+                    numbers.
+                </p>
+                <p class="lead">
+                    <span class="badge">3.</span> During the time that a survey
+                    is collecting responses, it is not possible to know which
+                    of the participants has responded.
+                </p>
+                <p class="lead">
+                    <span class="badge">4.</span> Once a survey has closed, all
+                    information other than the average salary is erased.
+                </p>
+                <p class="lead">
+                    <span class="badge">5.</span> All surveys have a 7 day
+                    expiration window.  At the end of the 7 days, all links
+                    expire and the survey result is no longer accessible.
+                </p>
+                <h2>Who I am and why I built this.</h2>
+                <p class="lead">
+                    My name is Piper Merriam and I'm a software engineer.  I feel
+                    strongly that one of the best ways to ensure pay equality is
+                    through information.  
+                    Sites like <a href="http://www.glassdoor.com" target="_blank">glassdoor</a>
+                    are great, however, I though there was a niche not being filled.
+                </p>
+                <p class="lead">
+                    I designed this app with privacy as a primary
+                    consideration.  I wanted to ensure that people could use
+                    this site with no fear of having their personal information
+                    leaked.
+                </p>
+                <p class="lead">
+                    This site does not store any personally identifying
+                    information, nor does it implement any tracking mechanisms.
+                    If you have any concerns or questions, feel free to email
+                    me at
+                    <a href="mailto:pipermerriam@gmail.com">pipermerriam@gmail.com</a>
+                </p>
+            </div>
+        </div>
+    </div>
 {% endblock content %}
