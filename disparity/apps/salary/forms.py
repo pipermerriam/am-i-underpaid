@@ -16,7 +16,8 @@ class SurveyCreateForm(forms.Form):
     )
     owner_salary = forms.IntegerField(
         label='Your Salary', help_text=(
-            "Your salary information is not directly stored in the database."
+            "Your salary information in whole dollars is not directly stored in "
+            "the database. (e.g. $50,000)"
         ),
     )
     participant_emails = forms.CharField(
@@ -66,4 +67,9 @@ class SurveyCreateForm(forms.Form):
 
 
 class SalaryForm(forms.Form):
-    salary = forms.IntegerField()
+    salary = forms.IntegerField(
+        help_text=(
+            "Your salary information in whole dollars is not directly stored in "
+            "the database. (e.g. $50,000)"
+        ),
+    )
