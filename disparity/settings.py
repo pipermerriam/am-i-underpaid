@@ -151,6 +151,10 @@ PIPELINE_CSS_COMPRESSOR = 'pipeline.compressors.NoopCompressor'
 PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.NoopCompressor'
 
 # Email Settings
+DEFAULT_FROM_EMAIL = excavator.env_string(
+    'DJANGO_DEFAULT_FROM_EMAIL', default='pipermerriam@gmail.com',
+)
+
 EMAIL_BACKEND = excavator.env_string(
     'DJANGO_EMAIL_BACKEND',
     default='django.core.mail.backends.smtp.EmailBackend',
