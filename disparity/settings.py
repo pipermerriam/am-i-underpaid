@@ -172,9 +172,6 @@ RAVEN_CONFIG = {
     'dsn': excavator.env_string('SENTRY_DSN', default=None),
 }
 
-# Herokuify
-SECURE_PROXY_SSL_HEADER = excavator.env_list('SECURE_PROXY_SSL_HEADER', default=None)
-
 # AWS
 AWS_ACCESS_KEY_ID = excavator.env_string('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = excavator.env_string('AWS_SECRET_ACCESS_KEY')
