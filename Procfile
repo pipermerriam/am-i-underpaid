@@ -1,0 +1,1 @@
+web: gunicorn --pythonpath="$PWD/am-i-underpaid" wsgi:application

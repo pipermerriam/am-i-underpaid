@@ -1,0 +1,12 @@
+# Development
+django-extensions==1.4.9
+Werkzeug==0.9.6
+django-debug-toolbar==1.2.2
+
+# Testing
+flake8
+pytest==2.6.4
+pytest-django==2.7.0
+pytest-pythonpath==0.5factory-boy==2.4.1
+WebTest==2.0.18
+django-webtest==1.7.7

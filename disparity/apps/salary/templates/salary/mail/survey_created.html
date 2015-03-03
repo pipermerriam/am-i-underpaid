@@ -1,0 +1,13 @@
+{% load humanize %}
+A salary survey was created.  You may follow the link below to input your
+salary.  When the survey has been finalized, you will be able to use the same
+link to view the average salary.
+
+[{{ survey_url }}]({{ survey_url }})
+
+- This system does not store any personally identifying information.  That
+  includes this email address and any salary information you enter.
+- Your salary will not be stored anywhere in the database, nor is there any
+  link between this survey and your email address.
+- The salary information submitted for this survey will destroyed in 
+  {{ expires_at|naturaltime }}

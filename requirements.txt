@@ -1,0 +1,28 @@
+# Django
+django>=1.7.1,<1.8.0
+
+# Storage
+django-storages==1.1.8
+boto==2.34.0
+
+# Images
+Pillow==2.6.1
+
+# Database
+psycopg2==2.5.4
+
+# Timezone support
+pytz==2014.10
+
+# Configuration
+env-excavator==1.2.0
+dj-database-url==0.3.0
+django-cache-url==0.8.0
+python-dotenv==0.1.0
+raven==5.2.0
+
+# 3rd party
+django-uuidfield==0.5.0
+django-pipeline==1.4.6
+django-bootstrap3==5.1.1
+django-emailtools==0.2.2

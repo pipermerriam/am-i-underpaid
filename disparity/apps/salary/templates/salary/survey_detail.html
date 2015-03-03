@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% load humanize %}
+
+{% block title %}Create Survey{% endblock %}
+
+{% block content %}
+{% if survey.is_open %}
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="well">
+                <h1>Salary Survey</h1>
+                {% if key_has_been_submitted %}
+                    <p class="lead">
+                        <strong>{{ survey.num_collected }}</strong> out of
+                        <strong>{{ survey.num_expected }}</strong> responses
+                        have been recorded.  Once all responses are in, or the
+                        survey owner finalizes the survey, the average salary
+                        will be displayed.
+                    </p>
+                {% else %}
+                    <form id="record-salary" action="." method="post">
+                        {% csrf_token %}
+                        {% bootstrap_form form %}
+                        <button class="btn btn-default" type="submit">Submit</button>
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% if is_admin %}
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="well">
+                    <h2>Finalize Survey</h2>
+                    {% if survey.num_collected >= 4 %}
+                        <form id="survey-finalize" action="{% url 'survey-finalize' token=token %}" method="post">
+                            {% csrf_token %}
+                            <button name="finalize" value="Finalize" class="btn btn-default" type="submit">Finalize</button>
+                        </form>
+                    {% else %}
+                        <p class="text-default lead">
+                            At least 4 responses are required before a survey
+                            can be finalized
+                        </p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% elif survey.is_finalized %}
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="well">
+                <p class="lead">Average Salary is: <strong>${{ survey.total|intcomma }}</strong></p>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <p>Something odd is going on</p>
+{% endif %}
+{% endblock content %}

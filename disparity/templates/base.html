@@ -1,0 +1,54 @@
+{% load staticfiles i18n pipeline %}<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}Am I Underpaid{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    {% block css %}
+        {% stylesheet 'base' %}
+    {% endblock %}
+
+  </head>
+
+  <body>
+
+    <div class="header navbar">
+      <div class="container">
+        <a class="navbar-brand" href="/">Am I Underpaid</a>
+        <ul class="nav navbar-nav">
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'survey-create' %}">Create Survey</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container">
+        
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {% if message.tags %}alert-{{ message.tags }}"{% endif %}>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        {% block content %}
+            <p>Use this document as a way to quick start any new project.</p>
+        {% endblock content %}
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    {% block js %}
+        {% javascript 'base' %}
+    {% endblock %}
+  </body>
+</html>
