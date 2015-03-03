@@ -30,3 +30,4 @@ newrelic==2.44.0.36
 gunicorn==19.2.1
 pylibmc==1.4.1
 django-s3-folder-storage==0.2
+python-dateutil==2.4.0
